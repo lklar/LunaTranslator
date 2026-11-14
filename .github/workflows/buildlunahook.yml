@@ -3,24 +3,24 @@ on:
   workflow_dispatch:
 
 jobs:
-  build_xp:
-    runs-on: windows-2019
-    permissions:
-      id-token: write
-      attestations: write
-      contents: write
-    steps:
-      - uses: actions/checkout@v4
-      - uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
-        with:
-          sdk-version: 26100
-      - run: python src/scripts/build_lunahook.py build x86 0 xp
-      - run: python src/scripts/packlunahook.py
+  # build_xp:
+  #   runs-on: windows-2019
+  #   permissions:
+  #     id-token: write
+  #     attestations: write
+  #     contents: write
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+  #       with:
+  #         sdk-version: 26100
+  #     - run: python src/scripts/build_lunahook.py build x86 0 xp
+  #     - run: python src/scripts/packlunahook.py
 
-      - uses: actions/upload-artifact@v4
-        with:
-          name: winxp
-          path: src/cpp/LunaHook/builds
+  #     - uses: actions/upload-artifact@v4
+  #       with:
+  #         name: winxp
+  #         path: src/cpp/LunaHook/builds
   
   # build_plugin:
   #   runs-on: windows-latest
@@ -85,7 +85,7 @@ jobs:
   
   build:
     runs-on: windows-latest
-    needs: [build_x,build_xp]
+    needs: [build_x]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
