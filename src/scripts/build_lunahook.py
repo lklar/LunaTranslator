@@ -16,11 +16,11 @@ if len(sys.argv) and sys.argv[1] == "merge":
         f"../build/Release",
         dirs_exist_ok=True,
     )
-    shutil.copytree(
-        f"build/winxp/Release_winxp",
-        f"../build/Release",
-        dirs_exist_ok=True,
-    )
+    # shutil.copytree(
+    #     f"build/winxp/Release_winxp",
+    #     f"../build/Release",
+    #     dirs_exist_ok=True,
+    # )
 
     targetdir = f"../build/Release"
     target = f"builds/Release.zip"
